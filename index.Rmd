@@ -1,0 +1,33 @@
+---
+title: "Final Project"
+description: |
+  Welcome to the website. I hope you enjoy it!
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+# Learn more about publishing to GitHub Pages at:
+# https://rstudio.github.io/distill/publish_website.html#github-pages
+
+```
+
+```{r}
+nhl <- read.csv("nhl.csv")
+library(ggplot2)
+library(forcats)
+library(ggpol)
+library(colorr)
+```
+
+## About the Game
+
+<figure>
+  <img src = "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/J3AJPRDMAII6RIZVYRID2BA6V4.jpg"     alt = "My pic"  width="90%" height="90%">
+  <figcaption>Washington Capitals' all-star and all-time great hockey player, Alexander Ovechkin, triumphantly holding the Stanley Cup for the first time after the Capitals' victory over the Las Vegas Golden Knights in the 2018 Stanley Cup Finals. Photo By The Washington Post via https://www.washingtonpost.com/sports/capitals/the-capitals-season--from-bitter-disappointment-to-a-stanley-cup/2018/06/09/6ba5a534-6c05-11e8-bea7-c8eb28bc52b1_story.html</figcaption>
+</figure>
+
+Are you excited to watch the upcoming NHL Stanley Cup finals and want to learn more about the game of hockey? Visit my story board to gain insight into the game by an analysis of data.

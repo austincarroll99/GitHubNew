@@ -1,0 +1,901 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+<!--radix_placeholder_navigation_in_header-->
+<meta name="distill:offset" content=""/>
+
+<script type="application/javascript">
+
+  window.headroom_prevent_pin = false;
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // initialize headroom for banner
+    var header = $('header').get(0);
+    var headerHeight = header.offsetHeight;
+    var headroom = new Headroom(header, {
+      tolerance: 5,
+      onPin : function() {
+        if (window.headroom_prevent_pin) {
+          window.headroom_prevent_pin = false;
+          headroom.unpin();
+        }
+      }
+    });
+    headroom.init();
+    if(window.location.hash)
+      headroom.unpin();
+    $(header).addClass('headroom--transition');
+
+    // offset scroll location for banner on hash change
+    // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+    window.addEventListener("hashchange", function(event) {
+      window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+    });
+
+    // responsive menu
+    $('.distill-site-header').each(function(i, val) {
+      var topnav = $(this);
+      var toggle = topnav.find('.nav-toggle');
+      toggle.on('click', function() {
+        topnav.toggleClass('responsive');
+      });
+    });
+
+    // nav dropdowns
+    $('.nav-dropbtn').click(function(e) {
+      $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+      $(this).parent().siblings('.nav-dropdown')
+         .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $("body").click(function(e){
+      $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $(".nav-dropdown").click(function(e){
+      e.stopPropagation();
+    });
+  });
+</script>
+
+<style type="text/css">
+
+/* Theme (user-documented overrideables for nav appearance) */
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #0F2E3D;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+.distill-site-header {
+
+}
+
+.distill-site-footer {
+
+}
+
+
+/* Site Header */
+
+.distill-site-header {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.distill-site-header .nav-left {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header .nav-left {
+    margin-left: 0;
+  }
+}
+
+
+.distill-site-header .nav-right {
+  float: right;
+  margin-right: 8px;
+}
+
+.distill-site-header a,
+.distill-site-header .title {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 10px 14px 10px;
+}
+
+.distill-site-header .title {
+  font-size: 18px;
+  min-width: 150px;
+}
+
+.distill-site-header .logo {
+  padding: 0;
+}
+
+.distill-site-header .logo img {
+  display: none;
+  max-height: 20px;
+  width: auto;
+  margin-bottom: -4px;
+}
+
+.distill-site-header .nav-image img {
+  max-height: 18px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .distill-site-header .logo img {
+    display: inline-block;
+  }
+  .distill-site-header .nav-left {
+    margin-left: 20px;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 20px;
+  }
+  .distill-site-header .title {
+    padding-left: 12px;
+  }
+}
+
+
+.distill-site-header .nav-toggle {
+  display: none;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-dropdown .nav-dropbtn {
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 10px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 1px;
+  z-index: 2;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-dropdown-content hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-dropdown-active {
+  display: block;
+}
+
+.nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+  color: black;
+  padding: 6px 24px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.nav-dropdown-content .nav-dropdown-header {
+  display: block;
+  padding: 5px 24px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.nav-dropdown:hover .nav-dropbtn {
+  color: white;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-right .nav-dropdown-content {
+  margin-left: -45%;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+  .distill-site-header a.nav-toggle {
+    float: right;
+    display: block;
+  }
+  .distill-site-header .title {
+    margin-left: 0;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 0;
+  }
+  .distill-site-header {
+    overflow: hidden;
+  }
+  .nav-right .nav-dropdown-content {
+    margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-header.responsive {position: relative; min-height: 500px; }
+  .distill-site-header.responsive a.nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .distill-site-header.responsive a,
+  .distill-site-header.responsive .nav-dropdown {
+    display: block;
+    text-align: left;
+  }
+  .distill-site-header.responsive .nav-left,
+  .distill-site-header.responsive .nav-right {
+    width: 100%;
+  }
+  .distill-site-header.responsive .nav-dropdown {float: none;}
+  .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+  .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Site Footer */
+
+.distill-site-footer {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+/* Headroom */
+
+d-title {
+  padding-top: 6rem;
+}
+
+@media print {
+  d-title {
+    padding-top: 4rem;
+  }
+}
+
+.headroom {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headroom--transition {
+  transition: all .4s ease-in-out;
+}
+
+.headroom--unpinned {
+  top: -100px;
+}
+
+.headroom--pinned {
+  top: 0;
+}
+
+/* adjust viewport for navbar height */
+/* helps vertically center bootstrap (non-distill) content */
+.min-vh-100 {
+  min-height: calc(100vh - 100px) !important;
+}
+
+</style>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/font-awesome-6.2.1/css/all.min.css" rel="stylesheet"/>
+<link href="site_libs/font-awesome-6.2.1/css/v4-shims.min.css" rel="stylesheet"/>
+<script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+<script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+<script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+<script type="application/javascript">
+
+function getMeta(metaName) {
+  var metas = document.getElementsByTagName('meta');
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].getAttribute('name') === metaName) {
+      return metas[i].getAttribute('content');
+    }
+  }
+  return '';
+}
+
+function offsetURL(url) {
+  var offset = getMeta('distill:offset');
+  return offset ? offset + '/' + url : url;
+}
+
+function createFuseIndex() {
+
+  // create fuse index
+  var options = {
+    keys: [
+      { name: 'title', weight: 20 },
+      { name: 'categories', weight: 15 },
+      { name: 'description', weight: 10 },
+      { name: 'contents', weight: 5 },
+    ],
+    ignoreLocation: true,
+    threshold: 0
+  };
+  var fuse = new window.Fuse([], options);
+
+  // fetch the main search.json
+  return fetch(offsetURL('search.json'))
+    .then(function(response) {
+      if (response.status == 200) {
+        return response.json().then(function(json) {
+          // index main articles
+          json.articles.forEach(function(article) {
+            fuse.add(article);
+          });
+          // download collections and index their articles
+          return Promise.all(json.collections.map(function(collection) {
+            return fetch(offsetURL(collection)).then(function(response) {
+              if (response.status === 200) {
+                return response.json().then(function(articles) {
+                  articles.forEach(function(article) {
+                    fuse.add(article);
+                  });
+                })
+              } else {
+                return Promise.reject(
+                  new Error('Unexpected status from search index request: ' +
+                            response.status)
+                );
+              }
+            });
+          })).then(function() {
+            return fuse;
+          });
+        });
+
+      } else {
+        return Promise.reject(
+          new Error('Unexpected status from search index request: ' +
+                      response.status)
+        );
+      }
+    });
+}
+
+window.document.addEventListener("DOMContentLoaded", function (event) {
+
+  // get search element (bail if we don't have one)
+  var searchEl = window.document.getElementById('distill-search');
+  if (!searchEl)
+    return;
+
+  createFuseIndex()
+    .then(function(fuse) {
+
+      // make search box visible
+      searchEl.classList.remove('hidden');
+
+      // initialize autocomplete
+      var options = {
+        autoselect: true,
+        hint: false,
+        minLength: 2,
+      };
+      window.autocomplete(searchEl, options, [{
+        source: function(query, callback) {
+          const searchOptions = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            limit: 10,
+          };
+          var results = fuse.search(query, searchOptions);
+          callback(results
+            .map(function(result) { return result.item; })
+          );
+        },
+        templates: {
+          suggestion: function(suggestion) {
+            var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+              ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+              : '';
+            var html = `
+              <div class="search-item">
+                <h3>${suggestion.title}</h3>
+                <div class="search-item-description">
+                  ${suggestion.description || ''}
+                </div>
+                <div class="search-item-preview">
+                  ${img}
+                </div>
+              </div>
+            `;
+            return html;
+          }
+        }
+      }]).on('autocomplete:selected', function(event, suggestion) {
+        window.location.href = offsetURL(suggestion.path);
+      });
+      // remove inline display style on autocompleter (we want to
+      // manage responsive display via css)
+      $('.algolia-autocomplete').css("display", "");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+</script>
+
+<style type="text/css">
+
+.nav-search {
+  font-size: x-small;
+}
+
+/* Algolioa Autocomplete */
+
+.algolia-autocomplete {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: sub;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 0;
+  border-radius: 6px;
+  border: 1px #0F2E3D solid;
+  width: 180px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-nav .algolia-autocomplete {
+    display: none;
+    visibility: hidden;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete {
+    display: inline-block;
+    visibility: visible;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+    margin-left: 0;
+    width: 400px;
+    max-height: 400px;
+  }
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 550px;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-top: 3px;
+  margin-left: -150px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 5px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.8em;
+  width: 80%;
+  margin-right: 4%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+  display: inline-block;
+  width: 15%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+  height: 3em;
+  width: auto;
+  display: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+  display: initial;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #eee;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+</style>
+
+
+<!--/radix_placeholder_navigation_in_header-->
+<!--radix_placeholder_site_in_header-->
+<!--/radix_placeholder_site_in_header-->
+
+<style type="text/css">
+body {
+  padding-top: 60px;
+}
+</style>
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Story Map},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Story Map}
+\author{}
+\date{\vspace{-2.5em}2023-04-28}
+
+\begin{document}
+\maketitle
+
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="index.html" class="title">Austin Carroll</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
+</div>
+<div class="nav-right">
+<a href="index.html">Home</a>
+<a href="about.html">Past Course Work</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nhl }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"\textasciitilde{}/Downloads/MATH 230/Distill Website/austin\_carroll/nhl.csv"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(forcats)}
+\FunctionTok{library}\NormalTok{(wesanderson)}
+\FunctionTok{library}\NormalTok{(ggpol)}
+\FunctionTok{library}\NormalTok{(colorr)}
+\FunctionTok{library}\NormalTok{(gridExtra)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{hoackey-explained-by-the-data}{%
+\subsection{Hoackey Explained by the
+Data}\label{hoackey-explained-by-the-data}}
+
+The data set includes data on statistics for the top 250 players in the
+NHL according to points from the 2022-2023 regular season, so points
+accumulated during the playoffs are excluded from the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ages }\OtherTok{\textless{}{-}} \FunctionTok{cut}\NormalTok{(nhl}\SpecialCharTok{$}\NormalTok{Age, }\FunctionTok{c}\NormalTok{(}\DecValTok{18}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{38}\NormalTok{), }\AttributeTok{right =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{ordered\_result =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"18{-}22"}\NormalTok{, }\StringTok{"23{-}26"}\NormalTok{, }\StringTok{"27{-}30"}\NormalTok{, }\StringTok{"31{-}34"}\NormalTok{, }\StringTok{"35{-}38"}\NormalTok{))}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ages, }\AttributeTok{y =} \FunctionTok{after\_stat}\NormalTok{(count)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(}\FunctionTok{after\_stat}\NormalTok{(count))), }\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Age Group"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frequency"}\NormalTok{,}
+       \AttributeTok{title =} \StringTok{"Realtive Frequency Barchart for Age of Player"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{story_board_files/figure-latex/unnamed-chunk-2-1.pdf}
+The relative frequncy barchart shows the frequency of ages for the top
+250 NHL players of the 2022-2023 regular season. The most frequent age
+group for the top 250 NHL players is 27 to 30. A top 250 NHL player is
+least likely to be in the age group 35 to 38.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{nhl, }\AttributeTok{mapping=}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ G, }\AttributeTok{y =} \FunctionTok{after\_stat}\NormalTok{(density), }\AttributeTok{color =}\NormalTok{ Pos, }\AttributeTok{fill =}\NormalTok{ Pos)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{wes\_palette}\NormalTok{(}\StringTok{"Moonrise2"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{wes\_palette}\NormalTok{(}\StringTok{"Moonrise2"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Defense"}\NormalTok{, }\StringTok{"Forward"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.6}\NormalTok{, }\AttributeTok{size =} \DecValTok{11}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Goals"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Density"}\NormalTok{,}
+       \AttributeTok{title =} \StringTok{"Density Plot for Goals Conditioned by Position"}\NormalTok{,}
+       \AttributeTok{fill =} \StringTok{"Position"}\NormalTok{)}
+
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ nhl, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ G, }\AttributeTok{y =}\NormalTok{ Pos, }\AttributeTok{fill =}\NormalTok{ Pos)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{wes\_palette}\NormalTok{(}\StringTok{"Moonrise2"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Defense"}\NormalTok{, }\StringTok{"Forward"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Goals"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Position"}\NormalTok{,}
+       \AttributeTok{title =} \StringTok{"Boxplot for Goals Conditioned by Position"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.4}\NormalTok{, }\AttributeTok{size =} \DecValTok{11}\NormalTok{))}
+
+\NormalTok{myplot }\OtherTok{\textless{}{-}} \FunctionTok{grid.arrange}\NormalTok{(p1, p2, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{story_board_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myplot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## TableGrob (2 x 1) "arrange": 2 grobs
+##   z     cells    name           grob
+## 1 1 (1-1,1-1) arrange gtable[layout]
+## 2 2 (2-2,1-1) arrange gtable[layout]
+\end{verbatim}
+
+The density plot for total goals conditioned by position shows that
+forwards outscored defensemen on average during the 2022-2023 regular
+season. The average number of goals scored by a forward was 22.45, where
+as the average number of goals sored by a defensman was 10.25. Both
+distributions are skewed to the right. The interquartile range (IQR) for
+the number of goals scored during the 2022-2023 is greater for forwards
+than defensemen. The IQR for forwards is 12 compared to 5 for
+defensemen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ nhl, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ HITS, }\AttributeTok{y =}\NormalTok{ Pos, }\AttributeTok{fill =}\NormalTok{ Pos)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Defense"}\NormalTok{, }\StringTok{"Forward"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#1ECBE1"}\NormalTok{, }\StringTok{"\#E1341E"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Hits"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Position"}\NormalTok{,}
+       \AttributeTok{title =} \StringTok{"Boxplot for Hits Conditioned by Position"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{story_board_files/figure-latex/unnamed-chunk-4-1.pdf}
+The distribution of hits for top defencemen during the 2022-2023 regular
+season has a greater mean than the distribution of hits for forwards
+during the 2022-2023 regular season. Both distributions are skewed the
+the right. The IQRs of the distribution of hits for forwards and
+defensemen are approximately equal. The IQRs for the distribution of
+hits for forwards and defensemen are 56 and 54, respectively.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Position }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Defense"}\NormalTok{, }\StringTok{"Forward"}\NormalTok{)}
+\NormalTok{Frequency }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{length}\NormalTok{(nhl}\SpecialCharTok{$}\NormalTok{Pos[nhl}\SpecialCharTok{$}\NormalTok{Pos }\SpecialCharTok{==} \StringTok{"D"}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(nhl}\SpecialCharTok{$}\NormalTok{Pos),}
+               \FunctionTok{length}\NormalTok{(nhl}\SpecialCharTok{$}\NormalTok{Pos[nhl}\SpecialCharTok{$}\NormalTok{Pos }\SpecialCharTok{==} \StringTok{"F"}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(nhl}\SpecialCharTok{$}\NormalTok{Pos))}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(Position, Frequency)}
+
+\NormalTok{seats }\OtherTok{\textless{}{-}} \FunctionTok{as.vector}\NormalTok{(}\FunctionTok{table}\NormalTok{(nhl}\SpecialCharTok{$}\NormalTok{Pos))}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(}\FunctionTok{table}\NormalTok{(nhl}\SpecialCharTok{$}\NormalTok{Pos))}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_parliament}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{seats =}\NormalTok{ seats, }\AttributeTok{fill =}\NormalTok{ n), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Parliament Plot of Position"}\NormalTok{,}
+       \AttributeTok{fill =} \StringTok{"Position"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#1ECBE1"}\NormalTok{, }\StringTok{"\#E1341E"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Defense"}\NormalTok{, }\StringTok{"Offense"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{annotation\_custom}\NormalTok{(}\FunctionTok{tableGrob}\NormalTok{(df), }\AttributeTok{xmin =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{xmax =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{ymin =} \DecValTok{0}\NormalTok{, }\AttributeTok{ymax =} \FloatTok{0.75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` in the `default_aes` field and elsewhere instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\includegraphics{story_board_files/figure-latex/unnamed-chunk-5-1.pdf}
+The parliament plot and the embedded frequency table show that a
+majority of the top 250 NHL players, about 75\%, of the 2022-2023
+regular season are forwards.
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+\end{document}

@@ -1,0 +1,119 @@
+---
+title: "Hockey Explained by the Data"
+date: "2023-04-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, warning = FALSE, echo = FALSE}
+nhl <- read.csv("nhl.csv")
+library(ggplot2)
+library(forcats)
+library(ggpol)
+library(colorr)
+library(gridExtra)
+library(knitr)
+```
+
+### About the Data
+  
+The data set includes data for the top 250 players in the NHL according to points from the 2022-2023 regular season, so points accumulated during the playoffs were excluded from the data. Points are earned when a player scores a goal, shots the puck in the opposing teams net, or gets an assist. An assist is awarded up to two player who have either passed, deflected, or shot the puck that contributed to or assisted with the scoring teammate's goal. I found the data for this project from the website QuantHockey. 
+
+```{r, echo = FALSE}
+ages <- cut(nhl$Age, c(18, 22, 26, 30, 34, 38), right = TRUE, ordered_result = TRUE, labels = c("18-22", "23-26", "27-30", "31-34", "35-38"))
+
+ggplot() +
+  geom_bar(aes(x = ages, y = after_stat(count)/sum(after_stat(count))), fill = "#0082BA") +
+  theme_linedraw() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        panel.background = element_rect(color = "#A7A8AA", linewidth = 5),
+        panel.grid = element_line(color = "#A7A8AA")) +
+  labs(x = "Age Group",
+       y = "Frequency",
+       title = "Realtive Frequency Bar Chart for Age of Players")
+```
+  
+The relative frequency bar chart shows the frequency of ages for the top 250 NHL players of the 2022-2023 regular season. The most frequent age group for the top 250 NHL players is 27 to 30. A top 250 NHL player is least likely to be in the age group 35 to 38.
+
+Hockey is one of the most aggressive professional sports; high-speed hits, sticks checks, and fist fights between players on opposing teams are all apart of the game. Consequently, NHL players tend to be younger on average than players of another sport. Older players are more prone to injuries than their younger counterparts, and it is harder to keep up with the fast pace of an NHL game when your physical ability depreciates below a certain level. According to the frequency bar chart, players thirty-five to thirty-eight years old make up less than five percent of the top 250 players, which can be contributed to the game's aggressive nature.
+
+```{r, echo = FALSE, warning = FALSE}
+Position <- c("Defense", "Forward")
+Frequency <- c(length(nhl$Pos[nhl$Pos == "D"])/length(nhl$Pos),
+               length(nhl$Pos[nhl$Pos == "F"])/length(nhl$Pos))
+df <- data.frame(Position, Frequency)
+
+seats <- as.vector(table(nhl$Pos))
+n <- names(table(nhl$Pos))
+
+ggplot() +
+  geom_parliament(aes(seats = seats, fill = n), color = "black") +
+  theme_void() +
+  labs(title = "Parliament Plot of Position",
+       fill = "Position") +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) +
+  scale_fill_manual(values = c("#FFA300", "#0082BA"), labels = c("Defense", "Offense")) +
+  annotation_custom(tableGrob(df), xmin = 1.82, xmax = 4.5, ymin = 1.75, ymax = 3.6)
+```
+
+The parliament plot and the embedded frequency table show that a majority of the top 250 NHL players, about 75%, of the 2022-2023 regular season are forwards.
+
+Hockey players can be one of three positions: a forward, defensemen, or a goalie. Each team has one goalie, two defencemen, and three forward on the ice during regular play. Goalies are stationed in front of their team's net, and their job is to block the opposing team's shots. Given their role on the ice, as important as it is, no goalies appear in the top 250 players list because they don't generate much offense. In fact, a goalie receives a penalty if he crosses the red line that divides the ice into two halves. Unlike goalies, forwards and defensemen are allowed to skate on either side of the rink. The roles of forwards and defensemen are different depending on which side of the ice the puck lies, but both positions work together on offense to get the puck in the back on the opponent's net. For this reason, defensemen and forwards both have spots on the list.
+
+When on offense, forwards cover the area of ice near the opposing team's net. On the other hand, defencemen remain around the blue line to prevent break-aways and keep the puck in the opposing team's zone. They also can initiate scoring opportunities by passing the puck to an open forward, or taking a slap shot from the blue line (there are two blue lines that divide the ice into thirds), which is hard for goalies to block because there is commonly traffic in front of the net limiting the goalies view of the puck.
+
+On the opposite side on the ice, the area covered by forwards and defencemen are reversed. Defencemen hang around the area of the ice around the net to block shots and steal the puck away from the other team's forwards, and forwards float around the blue line in anticipation of a pass from a defensemen on their team and to prevent the other team's defensemen from taking shots.
+
+<figure>
+  <img src = "https://i.pinimg.com/736x/19/d4/b1/19d4b19e1059f4114eb86f213c13c607.jpg" alt = "Hockey Diagram"  width="90%" height="90%">
+  <figcaption>Diagram of an ice hockey rink, and the players typically on the ice. https://www.pinterest.com/pin/ice-hockey--603341681334791343/</figcaption>
+</figure>
+
+<iframe src="https://rconnect.bucknell.edu/content/1a17fa1e-f948-41be-8896-6873243e291f" class="l-screen-inset shaded" height="1000px"></iframe>
+
+The shiny application includes three density graphs conditioned by position; one for goals, one for assists, and another for points (recall = goals plus assists). The horizontal lines on the graphs represent the means of the distributions.
+  
+The density plot for total goals conditioned by position shows that forwards outscored defencemen on average during the 2022-2023 regular season. The average number of goals scored by a forward was 22.45, where as the average number of goals scored by a defenceman was 10.25. Both distributions are skewed to the right. The interquartile range (IQR) for the number of goals scored during the 2022-2023 is greater for forwards than defencemen. The IQR for forwards is 12 compared to 5 for defencemen.
+
+The reason for the difference between the average number of goals scored by defencemen and forwards in the top 250 NHL players during of the 2022 - 2023 regular season can be explained by the nature of each position. Forwards are in a better position to score goals. When on offense, forwards cover the area of ice near the opposing team's net. On the other hand, defencemen remain around the blue line to prevent break-aways and keep the puck in the opposing team's zone. They also can initiate scoring opportunities by passing the puck to an open forward, or taking a slap shot from the blue line, which is hard for goalies to block because there is commonly traffic in front of the net limiting the goalies view of the ice.
+
+```{r, echo = FALSE}
+ggplot(data = nhl, mapping = aes(x = HITS, y = Pos, fill = Pos)) +
+  theme_linedraw() +
+  theme(panel.background = element_rect(color = "#A7A8AA", linewidth = 5),
+        plot.title = element_text(hjust = 0.5, face = "bold"),
+        panel.grid = element_line(color = "#A7A8AA")) +
+  geom_boxplot(alpha = 0.65) +
+  scale_y_discrete(labels = c("Defense", "Forward")) +
+  scale_fill_manual(values = c("#FFA300", "#0082BA")) +
+  guides(fill = "none") +
+  labs(x = "Hits",
+       y = "Position",
+       title = "Boxplot for Hits Conditioned by Position")
+```
+  
+The distribution of hits for top defencemen during the 2022-2023 regular season has a greater mean than the distribution of hits for forwards during the 2022-2023 regular season. Both distributions are skewed the right. The IQRs of the distribution of hits for forwards and defensemen are approximately equal. The IQRs for the distribution of hits for forwards and defensemen are 56 and 54, respectively.
+
+The number of hits is higher for defensive players as hits are made to knock an opposing player off of the puck. Since defensemens' role on defense is to steal the puck away from forwards, defensemen are in a better position to give checks than forwards.
+
+```{r, echo = FALSE}
+ggplot(data = nhl, mapping = aes(x = PIM, y = Pos, fill = Pos)) +
+  geom_boxplot(alpha = 0.65) +
+  scale_y_discrete(labels = c("Defense", "Forward")) +
+  scale_fill_manual(values = c("#FFA300", "#0082BA")) +
+  guides(fill = "none") +
+  theme_linedraw() +
+  theme(panel.background = element_rect(color = "#A7A8AA", linewidth = 5),
+        plot.title = element_text(hjust = 0.5, face = "bold"),
+        panel.grid = element_line(color = "#A7A8AA")) +
+  labs(x = "Penalty Minutes",
+       y = "Position",
+       title = "Boxplot for Penalty Minutes Conditioned by Position")
+```
+  
+The distribution of penalty minutes for defensemen in the top 250 NHL players during the 2022-2023 regular season has a greater mean than the distribution of penalty minutes for forward in the top 250 NHL players during the 2022-2023 regular season. The mean number of penalty minutes for a forwards and defensemen are 3l.88 minutes and 37.42 minutes, respectively. Both distributions are skewed to the right. The distribution for forwards has a greater spread. The IQR for the distribution of penalty minutes for forwards is 25 minutes, where as the distribution of penalty minutes for defensemen is 19 minutes.
+
+Penalties are called on players for various reasons, but they are most commonly called after an illegal check. For example, a check from behind or a check to the head are both illegal checks that result in a penalty. Defensemen are in the penalty box more often than forwards on average as checks are most commonly delivered on defense to knock opposing forwards off of the puck. Consequently, it is reasonable that the players who deliver the most checks are going to take an illegal check more frequently.
+

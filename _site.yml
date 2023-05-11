@@ -1,0 +1,15 @@
+name: "austin_carroll"
+title: "Austin Carroll"
+theme: theme.css
+description: |
+  Austin Carroll
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Past Course Work"
+      href: about.html
+    - text: "Story Board"
+      href: story_board.html
+output: distill::distill_article

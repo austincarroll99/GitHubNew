@@ -1,0 +1,110 @@
+---
+title: "Past Course Projects and Visualizations"
+description: |
+  Some additional details about the website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(stringr)
+library(aRtsy)
+library(fivethirtyeight)
+library(ggcorrplot)
+library(shiny)
+library(scales)
+library(MASS)
+library(wesanderson)
+library(Lock5Data)
+```
+
+## Generative Art 
+
+### *Bison Backlight*
+
+```{r, echo = FALSE}
+set.seed(2)
+artwork1 <- canvas_blacklight(colors = c("#E87722", "#003865", "#FFFFFF"), n = 2000)
+artwork1
+```
+
+I used aRty to create the brilliant masterpiece that is Bison Backlight; it depicts a beautiful combination of Bucknell University’s gorgeous primary colors: some shade of blue, some shade of orange, and white. All three colors harmoniously work together on the canvas to show off the colors worn by the Bucknell student on game day.
+
+## `ggplot2` Extension Project
+
+### Correlation Plot for Hate Crime Data
+
+```{r, echo = FALSE}
+data("hate_crimes")
+hate <- hate_crimes[complete.cases(hate_crimes), ]
+hate.sub <- hate[,3:13]
+corr <- round(cor(hate.sub), 2)
+
+ggcorrplot(corr,
+           method = "circle",
+           type = "lower",
+           colors = c("steelblue3", "white", "forestgreen"),
+           outline.color = "white",
+           ggtheme = theme_grey) +
+  labs(title = "Correlation Plot for Hate Crime Data") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Description: The data to this visualization comes from the package `fivethrityeight`; it stores hate crime data. The correlation plot shows all of the quantitative variables from the hate crime data set.
+  
+Visualization: The visualization shows the correlation coefficient r for each possible coupling of variables. The size and color of the circles varies with the strength of the correlation coefficients. Larger size and deeper color indicate a higher correlation coefficent whether r is positive or negative. 
+
+## Shiny app
+
+
+<iframe src="https://rconnect.bucknell.edu/content/650b6c76-0e26-4349-90e3-41e5f210d6b3/" class="l-screen-inset shaded" height="1000px"></iframe>
+
+I created this shiny application to help introductory statistics students learn about confidence intervals. The application includes visualizations to demonstrate the effects of different confidence levels on confidence interval width, and the effects of different confidence levels on confidence interval accuracy.
+
+## Visualizations of My Choice
+
+### Pulse By Exercise Level
+
+```{r, echo = FALSE}
+data(survey)
+
+pulse.medians <- aggregate(Pulse ~ Exer, data = survey, FUN = median)
+ggplot(data = survey, aes(x = Pulse, y = ..density.., color = Exer, fill = Exer)) +
+  geom_density(alpha = 0.15) +
+  scale_color_manual(values = wes_palette("Rushmore")) +
+  scale_fill_manual(values = wes_palette("Rushmore")) +
+  guides(fill = "none") +
+  labs(x = "Pulse",
+       y = "Density",
+       color = "Exercise Frequency") +
+  geom_vline(data = pulse.medians, aes(xintercept = Pulse, color = Exer), linetype = "dashed") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Description: The data to this visualization is from `MASS`; it is survey data about students. The variables used in this visualization are pulse and exercise level. 
+  
+Visualization: The visualization shows density plots for pulse conditioned by exercise level.
+
+### Height vs. Smoke
+
+```{r, echo = FALSE}
+survey.sub = survey[complete.cases(survey), ]
+#the level names have to match exactly how they are represented in the data frame; once order has been established, you can change the names of the levels but they have to in the same order
+survey.sub$Smoke = factor(survey.sub$Smoke, ordered = TRUE, levels = c("Never", "Occas", "Regul", "Heavy"))
+levels(survey.sub$Smoke) <- c("Never", "Occasionally", "Regularly", "Heavy")
+
+ggplot(survey.sub, aes(x = Smoke, y = Height, fill = Smoke)) +
+  geom_violin(scale = "width", alpha = 0.25) +
+  geom_boxplot(width = 0.25, alpha = 0.6) +
+  theme_linedraw() +
+  scale_fill_discrete(name = "Smoking Frequency", labels = c("Never", "Occasionally", "Regularly", "Heavy")) +
+  labs(title = "Height vs. Smoke") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Description: The data for this visualization comes from `MASS`; it is survey data about students. The variables used in the visualization are the height of the students and smoking frequency.
+  
+Visualization: The visualization shows the distribution of height conditioned by smoking frequency.
